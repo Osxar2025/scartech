@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda | ScarTech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">ScarTech</div>
+    <nav class="tab-nav" aria-label="Navegación principal">
+      <a class="tab-link" href="index.html">Inicio</a>
+      <a class="tab-link" href="video-a-mp3.html">Video a MP3</a>
+      <a class="tab-link" href="audiovisuales.html">Audiovisuales</a>
+      <a class="tab-link active" href="tienda.html">Tienda</a>
+
+      <div class="social-links" aria-label="Redes sociales">
+        <a class="social-icon" href="https://www.instagram.com/oscar_cm25?igsh=MXNuMXYxd2Fsb2s2eg==&igsi=MXNuMXYxd2Fsb2s2eg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>
+        </a>
+        <a class="social-icon" href="https://wa.me/3116427476?text=Hola%20Oscar%2C%20quiero%20hablar%20contigo" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 18.2l-1.3-1.1c-.3-.2-.7-.2-1 .1l-.8.9c-.2.2-.5.2-.7 0-2.1-1.4-4.3-3.6-5.7-5.7-.2-.2-.2-.5 0-.7l.9-.8c.3-.3.3-.7.1-1L5.8 3.5c-.2-.3-.7-.4-1-.2L3.1 4.1c-.3.2-.5.6-.4 1 .5 2.5 2.2 6.2 5.1 9.1 2.8 2.9 6.5 4.7 9.1 5.1.4.1.8-.1 1-.4l.8-1.3c.2-.3.1-.8-.2-1z"></path><path d="M14.5 2.7A9.4 9.4 0 0 1 21 9.5"></path></svg>
+        </a>
+        <a class="social-icon github" href="https://github.com/Osxar2025" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.3A9.7 9.7 0 0 0 2.3 12c0 4.3 2.8 7.9 6.7 9.2.5.1.7-.2.7-.5v-1.8c-2.7.6-3.3-1.3-3.3-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.4-2.2-.3-4.5-1.1-4.5-5 0-1.1.4-2.1 1-2.8-.1-.3-.4-1.4.1-2.9 0 0 .9-.3 3 .9a9.5 9.5 0 0 1 5.5 0c2.1-1.2 3-.9 3-.9.5 1.5.2 2.6.1 2.9.7.7 1 1.7 1 2.8 0 3.9-2.3 4.7-4.5 5 .4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5a9.7 9.7 0 0 0 6.7-9.2A9.7 9.7 0 0 0 12 2.3z"></path></svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap catalog-wrap">
+    <header>
+      <div class="eyebrow"><span class="dot"></span>Catálogo · tecnología y creatividad</div>
+      <h1>Tienda <span>de productos</span></h1>
+      <p class="sub">Encuentra herramientas y accesorios para trabajo, estudio y contenido audiovisual con una experiencia de compra moderna.</p>
+    </header>
+
+    <section class="panel storefront-hero">
+      <div class="rivet tl"></div><div class="rivet tr"></div><div class="rivet bl"></div><div class="rivet br"></div>
+      <div class="store-hero-content">
+        <div>
+          <span class="hero-kicker">Destacados</span>
+          <h2>Equipos que impulsan tu flujo digital</h2>
+        </div>
+        <a href="index.html" class="ghost-btn">Volver al inicio</a>
+      </div>
+    </section>
+
+    <section class="panel catalog-list-panel">
+      <div class="rivet tl"></div><div class="rivet tr"></div><div class="rivet bl"></div><div class="rivet br"></div>
+      <div class="list-header">
+        <h2>Catálogo</h2>
+        <span id="productCount">0 elementos</span>
+      </div>
+      <div id="catalogGrid" class="catalog-grid"></div>
+    </section>
+
+    <section class="panel catalog-panel">
+      <div class="rivet tl"></div><div class="rivet tr"></div><div class="rivet bl"></div><div class="rivet br"></div>
+
+      <h2 class="admin-title">Gestión del inventario</h2>
+      <form id="productForm" class="product-form">
+        <div class="form-grid">
+          <label>
+            <span>Nombre</span>
+            <input type="text" id="name" placeholder="Ej. Audífonos Bluetooth" required>
+          </label>
+
+          <label>
+            <span>Categoría</span>
+            <input type="text" id="category" placeholder="Ej. Audio" required>
+          </label>
+
+          <label>
+            <span>Precio</span>
+            <input type="number" id="price" min="0" step="0.01" placeholder="0.00" required>
+          </label>
+
+          <label>
+            <span>Stock</span>
+            <input type="number" id="stock" min="0" step="1" placeholder="0" required>
+          </label>
+        </div>
+
+        <div class="image-field">
+          <label>
+            <span>URL de la imagen</span>
+            <input type="url" id="imageUrl" placeholder="https://ejemplo.com/producto.jpg">
+          </label>
+          <div class="image-preview-box">
+            <img id="imagePreview" alt="Vista previa del producto">
+            <span id="imagePreviewText">Sin imagen</span>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="save-btn" id="saveProductBtn">Guardar producto</button>
+          <button type="button" class="cancel-btn" id="cancelEditBtn">Cancelar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel catalog-list-panel">
+      <div class="rivet tl"></div><div class="rivet tr"></div><div class="rivet bl"></div><div class="rivet br"></div>
+      <div class="list-header">
+        <h2>Administración</h2>
+        <span id="productCountAdmin">Detalle del inventario</span>
+      </div>
+      <div id="productList" class="product-list"></div>
+    </section>
+  </main>
+
+  <script src="tienda.js"></script>
+</body>
+</html>
