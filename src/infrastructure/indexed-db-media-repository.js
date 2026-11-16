@@ -60,6 +60,43 @@ export class IndexedDbMediaRepository {
     });
   }
 
+  async update(input) {
+    const database = await this.openDatabase();
+    return new Promise((resolve, reject) => {
+      const transaction = database.transaction(STORE_NAME, 'readwrite');
+      const store = transaction.objectStore(STORE_NAME);
+      const request = store.get(input.id);
+      let updated;
+      let existingFile;
+
+      request.addEventListener('success', () => {
+        const existing = request.result;
+        if (!existing) {
+          transaction.abort();
+          return;
+        }
+
+        existingFile = existing.file;
+        updated = createMediaItem({
+          ...existing,
+          ...input,
+          fileName: input.fileName ?? existing.fileName,
+          size: input.size ?? existing.size
+        }, input.id);
+        store.put({ ...updated, url: '', file: existing.file });
+      });
+
+      transaction.addEventListener('complete', () => resolve({
+        ...updated,
+        url: this.urlApi.createObjectURL(existingFile)
+      }));
+      transaction.addEventListener('error', () => reject(new Error('No se pudo actualizar el archivo multimedia.')));
+      transaction.addEventListener('abort', () => reject(new Error(request.result
+        ? 'No se pudo actualizar el archivo multimedia.'
+        : 'No se encontró el archivo multimedia que quieres actualizar.')));
+    });
+  }
+
   async remove(id) {
     const database = await this.openDatabase();
     return new Promise((resolve, reject) => {

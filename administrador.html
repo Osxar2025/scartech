@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administración del contenido de ScarTech.">
+  <title>Administrador | ScarTech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">ScarTech · Administración</div>
+    <nav class="tab-nav" aria-label="Navegación principal">
+      <a class="tab-link" href="inicio.html">Inicio</a>
+      <a class="tab-link" href="index.html">Tienda</a>
+      <a class="tab-link" href="video-a-mp3.html">Video a MP3</a>
+      <a class="tab-link" href="audiovisuales.html">Audiovisuales</a>
+      <a class="tab-link active" href="administrador.html" aria-current="page">Administrador</a>
+    </nav>
+  </header>
+
+  <main class="wrap admin-wrap">
+    <section class="panel admin-auth-panel" id="adminAuthPanel">
+      <div class="eyebrow"><span class="dot"></span>Acceso privado en este navegador</div>
+      <h1 id="authTitle">Administrador <span>ScarTech</span></h1>
+      <p class="sub">Elige tus propias credenciales para este navegador. No se guarda la contraseña en texto.</p>
+      <div class="admin-demo-notice">Este acceso local solo oculta el panel en este navegador. No reemplaza autenticación segura de servidor y no debe usarse para proteger datos sensibles.</div>
+
+      <form class="admin-form" id="adminSetupForm" hidden>
+        <h2>Configurar acceso</h2>
+        <label><span>Correo de administrador</span><input id="setupEmail" type="email" autocomplete="username" required></label>
+        <label><span>Contraseña (mínimo 12 caracteres)</span><input id="setupPassword" type="password" autocomplete="new-password" minlength="12" required></label>
+        <label><span>Confirmar contraseña</span><input id="setupPasswordConfirm" type="password" autocomplete="new-password" minlength="12" required></label>
+        <button class="save-btn" type="submit">Crear acceso</button>
+      </form>
+
+      <form class="admin-form" id="adminLoginForm" hidden>
+        <h2>Iniciar sesión</h2>
+        <label><span>Correo de administrador</span><input id="loginEmail" type="email" autocomplete="username" required></label>
+        <label><span>Contraseña</span><input id="loginPassword" type="password" autocomplete="current-password" required></label>
+        <button class="save-btn" type="submit">Entrar al administrador</button>
+      </form>
+      <p class="admin-feedback" id="authFeedback" role="alert" hidden></p>
+    </section>
+
+    <section id="adminDashboard" hidden>
+      <header class="admin-heading">
+        <div>
+          <div class="eyebrow"><span class="dot"></span>Panel de control</div>
+          <h1>Administrar <span>contenido</span></h1>
+          <p class="sub">Edita lo que aparece en cada sección de la página pública.</p>
+        </div>
+        <button class="cancel-btn admin-logout" type="button" id="logoutButton">Cerrar sesión</button>
+      </header>
+
+      <nav class="admin-section-tabs" aria-label="Secciones de administración">
+        <button class="admin-tab active" type="button" data-admin-section="products">Tienda</button>
+        <button class="admin-tab" type="button" data-admin-section="media">Audiovisuales</button>
+        <button class="admin-tab" type="button" data-admin-section="blog">Inicio / Blog</button>
+        <button class="admin-tab" type="button" data-admin-section="converter">Video a MP3</button>
+      </nav>
+
+      <section class="panel admin-section-panel" id="admin-products" data-section="products">
+        <div class="list-header"><h2>Productos de la tienda</h2><span id="adminProductCount">0 productos</span></div>
+        <form class="admin-form admin-content-form" id="adminProductForm">
+          <input id="adminProductId" type="hidden">
+          <div class="admin-form-grid">
+            <label><span>Nombre</span><input id="adminProductName" required></label>
+            <label><span>Categoría</span><input id="adminProductCategory" required></label>
+            <label><span>Precio</span><input id="adminProductPrice" type="number" min="0" step="0.01" required></label>
+            <label><span>Stock</span><input id="adminProductStock" type="number" min="0" step="1" required></label>
+          </div>
+          <label><span>URL de imagen (opcional)</span><input id="adminProductImage" type="url"></label>
+          <label><span>Descripción (opcional)</span><textarea id="adminProductDescription" rows="3"></textarea></label>
+          <div class="form-actions"><button class="save-btn" type="submit" id="adminProductSave">Guardar producto</button><button class="cancel-btn" type="button" data-reset-form="adminProductForm">Limpiar</button></div>
+        </form>
+        <div class="admin-record-list" id="adminProductList"></div>
+      </section>
+
+      <section class="panel admin-section-panel" id="admin-media" data-section="media" hidden>
+        <div class="list-header"><h2>Biblioteca audiovisual</h2><span id="adminMediaCount">0 archivos</span></div>
+        <form class="admin-form admin-content-form" id="adminMediaForm">
+          <input id="adminMediaId" type="hidden">
+          <div class="admin-form-grid">
+            <label><span>Tipo</span><select id="adminMediaType"><option value="music">Música</option><option value="image">Imagen</option><option value="video">Video</option></select></label>
+            <label><span>Título</span><input id="adminMediaTitle" required></label>
+            <label id="adminMediaArtistField"><span>Artista</span><input id="adminMediaArtist"></label>
+            <label id="adminMediaDescriptionField" hidden><span>Descripción</span><input id="adminMediaDescription"></label>
+          </div>
+          <label id="adminMediaFileField"><span>Archivo</span><input id="adminMediaFile" type="file" accept="audio/*,image/*,video/*"></label>
+          <p class="admin-inline-note" id="adminMediaFileNote" hidden>Deja vacío para conservar el archivo actual.</p>
+          <div class="form-actions"><button class="save-btn" type="submit" id="adminMediaSave">Agregar a la biblioteca</button><button class="cancel-btn" type="button" data-reset-form="adminMediaForm">Limpiar</button></div>
+        </form>
+        <div class="admin-record-list" id="adminMediaList"></div>
+      </section>
+
+      <section class="panel admin-section-panel" id="admin-blog" data-section="blog" hidden>
+        <div class="list-header"><h2>Publicaciones de Inicio</h2><span>Se muestran en Inicio / Blog</span></div>
+        <form class="admin-form admin-content-form" id="adminBlogForm">
+          <input id="adminBlogId" type="hidden">
+          <div class="admin-form-grid">
+            <label><span>Sección de destino</span><select id="adminBlogSection"><option value="store">Tienda</option><option value="converter">Video a MP3</option><option value="media">Audiovisuales</option><option value="inventory">Cargar productos</option></select></label>
+            <label><span>Título</span><input id="adminBlogTitle" required></label>
+          </div>
+          <label><span>Descripción</span><textarea id="adminBlogDescription" rows="4" required></textarea></label>
+          <div class="form-actions"><button class="save-btn" type="submit" id="adminBlogSave">Guardar publicación</button><button class="cancel-btn" type="button" data-reset-form="adminBlogForm">Limpiar</button></div>
+        </form>
+        <div class="admin-record-list" id="adminBlogList"></div>
+      </section>
+
+      <section class="panel admin-section-panel" id="admin-converter" data-section="converter" hidden>
+        <div class="list-header"><h2>Información de Video a MP3</h2><span>Texto visible para los usuarios</span></div>
+        <form class="admin-form admin-content-form" id="adminConverterForm">
+          <label><span>Título</span><input id="adminConverterTitle" required></label>
+          <label><span>Descripción</span><textarea id="adminConverterDescription" rows="3" required></textarea></label>
+          <label><span>Formatos compatibles</span><input id="adminConverterFileHint" required></label>
+          <label><span>Aviso de privacidad</span><textarea id="adminConverterPrivacy" rows="3" required></textarea></label>
+          <button class="save-btn" type="submit">Guardar información</button>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <a class="admin-floating-load" href="#adminProductForm" id="adminLoadButton" hidden aria-label="Cargar un producto">Cargar <span aria-hidden="true">+</span></a>
+  <script type="module" src="src/presentation/admin-page.js"></script>
+</body>
+</html>

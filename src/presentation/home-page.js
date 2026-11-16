@@ -1,14 +1,11 @@
 import { HomeContentService } from '../application/home-content-service.js';
 import { IndexedDbMediaRepository } from '../infrastructure/indexed-db-media-repository.js';
 import { LocalStorageProductRepository } from '../infrastructure/local-storage-product-repository.js';
-import { sampleContent } from '../infrastructure/sample-content.js';
 import { element } from './dom.js';
-import './floating-navigation.js';
 
 const contentService = new HomeContentService(
   new LocalStorageProductRepository(),
-  new IndexedDbMediaRepository(),
-  sampleContent
+  new IndexedDbMediaRepository()
 );
 
 function renderProducts(products) {
@@ -16,6 +13,10 @@ function renderProducts(products) {
   if (!grid) return;
 
   grid.replaceChildren();
+  if (!products.length) {
+    grid.append(element('p', 'empty-state', 'Pronto encontrarás aquí los productos destacados.'));
+    return;
+  }
   products.slice(0, 3).forEach((product) => {
     const card = element('article', 'product-showcase');
     const image = element('img');
@@ -41,7 +42,12 @@ function renderMedia(media) {
   if (!grid) return;
 
   grid.replaceChildren();
-  [...media.music, ...media.image, ...media.video].slice(0, 4).forEach((item) => {
+  const items = [...media.music, ...media.image, ...media.video].slice(0, 4);
+  if (!items.length) {
+    grid.append(element('p', 'empty-state', 'Pronto encontrarás aquí nuevas publicaciones audiovisuales.'));
+    return;
+  }
+  items.forEach((item) => {
     const card = element('article', 'media-showcase');
     if (item.type === 'image') {
       const thumbnail = element('div', 'media-thumb');

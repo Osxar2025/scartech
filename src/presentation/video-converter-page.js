@@ -1,6 +1,12 @@
 import { ConvertVideoToMp3 } from '../application/convert-video-to-mp3.js';
 import { FFmpegConverter } from '../infrastructure/ffmpeg-converter.js';
-import './floating-navigation.js';
+import { LocalStorageConverterInfoRepository } from '../infrastructure/local-storage-admin-repositories.js';
+
+const converterInfo = new LocalStorageConverterInfoRepository().get();
+document.querySelector('h1').textContent = converterInfo.title;
+document.getElementById('converterDescription').textContent = converterInfo.description;
+document.getElementById('converterFileHint').textContent = converterInfo.fileHint;
+document.getElementById('converterPrivacyNote').textContent = converterInfo.privacyNote;
 
 const conversion = new ConvertVideoToMp3(new FFmpegConverter({
   ffmpegLibrary: window.FFmpegWASM,

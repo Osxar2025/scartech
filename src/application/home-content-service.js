@@ -1,8 +1,7 @@
 export class HomeContentService {
-  constructor(productRepository, mediaRepository, fallbackContent) {
+  constructor(productRepository, mediaRepository) {
     this.productRepository = productRepository;
     this.mediaRepository = mediaRepository;
-    this.fallbackContent = fallbackContent;
   }
 
   async getFeaturedContent() {
@@ -12,10 +11,8 @@ export class HomeContentService {
     ]);
 
     return {
-      products: products.length ? products : this.fallbackContent.products,
-      media: media.music.length || media.image.length || media.video.length
-        ? media
-        : this.fallbackContent.media
+      products,
+      media
     };
   }
 }

@@ -19,6 +19,10 @@ export class MediaService {
     return this.repository.create(item, file);
   }
 
+  update(input) {
+    return this.repository.update(input);
+  }
+
   remove(id) {
     return this.repository.remove(id);
   }

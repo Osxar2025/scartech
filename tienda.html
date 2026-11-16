@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cargar productos | ScarTech</title>
+  <title>Tienda | ScarTech</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/estilo.css">
@@ -16,6 +16,7 @@
       <a class="tab-link" href="index.html">Tienda</a>
       <a class="tab-link" href="video-a-mp3.html">Video a MP3</a>
       <a class="tab-link" href="audiovisuales.html">Audiovisuales</a>
+      <a class="tab-link" href="administrador.html">Administrador</a>
 
       <div class="social-links" aria-label="Redes sociales">
         <a class="social-icon" href="https://www.instagram.com/oscar_cm25?igsh=MXNuMXYxd2Fsb2s2eg==&igsi=MXNuMXYxd2Fsb2s2eg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -34,7 +35,7 @@
   <main class="wrap catalog-wrap">
     <header>
       <div class="eyebrow"><span class="dot"></span>Catálogo · tecnología y creatividad</div>
-      <h1>Cargar <span>productos</span></h1>
+      <h1>Catálogo <span>de productos</span></h1>
       <p class="sub">Encuentra herramientas y accesorios para trabajo, estudio y contenido audiovisual con una experiencia de compra moderna.</p>
     </header>
 
@@ -58,61 +59,8 @@
       <div id="catalogGrid" class="catalog-grid"></div>
     </section>
 
-    <section class="panel catalog-panel">
-      <div class="rivet tl"></div><div class="rivet tr"></div><div class="rivet bl"></div><div class="rivet br"></div>
-
-      <h2 class="admin-title">Gestión del inventario</h2>
-      <form id="productForm" class="product-form">
-        <div class="form-grid">
-          <label>
-            <span>Nombre</span>
-            <input type="text" id="name" placeholder="Ej. Audífonos Bluetooth" required>
-          </label>
-
-          <label>
-            <span>Categoría</span>
-            <input type="text" id="category" placeholder="Ej. Audio" required>
-          </label>
-
-          <label>
-            <span>Precio</span>
-            <input type="number" id="price" min="0" step="0.01" placeholder="0.00" required>
-          </label>
-
-          <label>
-            <span>Stock</span>
-            <input type="number" id="stock" min="0" step="1" placeholder="0" required>
-          </label>
-        </div>
-
-        <div class="image-field">
-          <label>
-            <span>URL de la imagen</span>
-            <input type="url" id="imageUrl" placeholder="https://ejemplo.com/producto.jpg">
-          </label>
-          <div class="image-preview-box">
-            <img id="imagePreview" alt="Vista previa del producto">
-            <span id="imagePreviewText">Sin imagen</span>
-          </div>
-        </div>
-
-        <div class="form-actions">
-          <button type="submit" class="save-btn" id="saveProductBtn">Guardar producto</button>
-          <button type="button" class="cancel-btn" id="cancelEditBtn">Cancelar</button>
-        </div>
-      </form>
-    </section>
-
-    <section class="panel catalog-list-panel">
-      <div class="rivet tl"></div><div class="rivet tr"></div><div class="rivet bl"></div><div class="rivet br"></div>
-      <div class="list-header">
-        <h2>Administración</h2>
-        <span id="productCountAdmin">Detalle del inventario</span>
-      </div>
-      <div id="productList" class="product-list"></div>
-    </section>
   </main>
 
-  <script type="module" src="src/presentation/product-page.js"></script>
+  <script type="module" src="src/presentation/storefront-page.js"></script>
 </body>
 </html>

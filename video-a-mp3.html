@@ -16,6 +16,7 @@
     <a class="tab-link" href="index.html">Tienda</a>
     <a class="tab-link active" href="video-a-mp3.html">Video a MP3</a>
     <a class="tab-link" href="audiovisuales.html">Audiovisuales</a>
+    <a class="tab-link" href="administrador.html">Administrador</a>
 
     <div class="social-links" aria-label="Redes sociales">
       <a class="social-icon" href="https://www.instagram.com/oscar_cm25?igsh=MXNuMXYxd2Fsb2s2eg==&igsi=MXNuMXYxd2Fsb2s2eg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -36,7 +37,7 @@
   <header>
     <div class="eyebrow"><span class="dot"></span>Herramienta local · sin servidor</div>
     <h1>Video <span>→</span> MP3</h1>
-    <p class="sub">Sube un video tuyo y extrae el audio como MP3. Todo ocurre dentro de tu navegador — el archivo nunca se sube a ningún servidor.</p>
+    <p class="sub" id="converterDescription">Sube un video tuyo y extrae el audio como MP3. Todo ocurre dentro de tu navegador — el archivo nunca se sube a ningún servidor.</p>
   </header>
 
   <!-- Upload panel -->
@@ -46,7 +47,7 @@
     <div class="dropzone" id="dropzone">
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4M12 4L7 9M12 4l5 5"/><path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>
       <div class="label">Arrastra tu video aquí o haz clic para elegirlo</div>
-      <div class="hint">MP4, MOV, WEBM, MKV — procesado en tu navegador</div>
+      <div class="hint" id="converterFileHint">MP4, MOV, WEBM, MKV — procesado en tu navegador</div>
     </div>
     <input type="file" id="fileInput" accept="video">
 
@@ -95,8 +96,7 @@
   </div>
 
   <footer>
-    Esta herramienta convierte únicamente archivos que subes desde tu propio dispositivo.<br>
-    No descarga contenido de sitios web ni de plataformas de video.
+    <span id="converterPrivacyNote">Esta herramienta convierte únicamente archivos que subes desde tu propio dispositivo. No descarga contenido de sitios web ni de plataformas de video.</span>
   </footer>
 </div>
 
