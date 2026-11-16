@@ -2,6 +2,7 @@ import { MediaService } from '../application/media-service.js';
 import { IndexedDbMediaRepository } from '../infrastructure/indexed-db-media-repository.js';
 import { MEDIA_TYPES } from '../domain/media-item.js';
 import { clear, element } from './dom.js';
+import './floating-navigation.js';
 
 const service = new MediaService(new IndexedDbMediaRepository());
 const grid = document.getElementById('libraryGrid');

@@ -1,6 +1,7 @@
 import { ProductService } from '../application/product-service.js';
 import { LocalStorageProductRepository } from '../infrastructure/local-storage-product-repository.js';
 import { clear, element } from './dom.js';
+import './floating-navigation.js';
 
 const service = new ProductService(new LocalStorageProductRepository());
 const form = document.getElementById('productForm');

@@ -3,6 +3,7 @@ import { IndexedDbMediaRepository } from '../infrastructure/indexed-db-media-rep
 import { LocalStorageProductRepository } from '../infrastructure/local-storage-product-repository.js';
 import { sampleContent } from '../infrastructure/sample-content.js';
 import { element } from './dom.js';
+import './floating-navigation.js';
 
 const contentService = new HomeContentService(
   new LocalStorageProductRepository(),
