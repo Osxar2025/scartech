@@ -974,6 +974,46 @@
     max-width: 1100px;
   }
 
+  .floating-load-button {
+    position: fixed;
+    right: 28px;
+    bottom: 28px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    border: 1px solid rgba(245, 166, 35, 0.7);
+    border-radius: 50%;
+    background: var(--accent);
+    color: #1A1200;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.4), 0 0 22px rgba(245, 166, 35, 0.2);
+    font-family: var(--font-body);
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1;
+    text-decoration: none;
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+
+  .floating-load-button:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+  }
+
+  .floating-load-button:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 560px) {
+    .floating-load-button {
+      right: 18px;
+      bottom: 18px;
+    }
+  }
+
   .hero-panel {
     padding: 30px 26px 24px;
     margin-bottom: 28px;
