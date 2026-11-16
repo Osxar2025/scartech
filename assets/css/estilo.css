@@ -14,6 +14,22 @@
     --font-display: 'Space Grotesk', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     --font-body: 'Inter', sans-serif;
+    --nav-surface: rgba(20, 23, 26, 0.9);
+  }
+
+  :root[data-theme="light"]{
+    --bg: #F3F7F7;
+    --surface: #FFFFFF;
+    --surface-2: #E8F0F0;
+    --border: #C8D6D6;
+    --text: #172525;
+    --text-muted: #5B6B6B;
+    --accent: #18B6A5;
+    --accent-dim: #0F8278;
+    --accent-soft: rgba(24,182,165,0.12);
+    --success: #11877D;
+    --danger: #C94F37;
+    --nav-surface: rgba(255,255,255,0.92);
   }
 
   * { box-sizing: border-box; }
@@ -30,30 +46,37 @@
       repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px);
   }
 
+  :root[data-theme="light"] body{
+    background-image:
+      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(24,182,165,0.08), transparent),
+      repeating-linear-gradient(0deg, rgba(23,37,37,0.018) 0px, rgba(23,37,37,0.018) 1px, transparent 1px, transparent 3px);
+  }
+
   .topbar{
     max-width: 760px;
     margin: 0 auto;
-    padding: 28px 20px 12px;
+    padding: 16px 20px 8px;
   }
 
   .brand{
     font-family: var(--font-display);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text);
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
 
   .tab-nav{
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
-    padding: 8px;
+    gap: 4px;
+    padding: 4px;
     border: 1px solid var(--border);
     border-radius: 12px;
-    background: rgba(20, 23, 26, 0.9);
+    background: var(--nav-surface);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
   }
 
@@ -61,7 +84,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 16px;
+    padding: 7px 11px;
     border-radius: 8px;
     text-decoration: none;
     font-family: var(--font-mono);
@@ -83,6 +106,83 @@
     border-color: var(--accent);
     font-weight: 700;
     box-shadow: 0 0 22px rgba(245,166,35,0.18);
+  }
+
+  .tab-link[href="administrador.html"]{
+    position: relative;
+    margin-left: 8px;
+    color: var(--accent);
+    border-color: var(--accent-dim);
+    background: var(--accent-soft);
+  }
+
+  .tab-link[href="administrador.html"]::before{
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    left: -8px;
+    border-left: 1px solid var(--border);
+    content: "";
+  }
+
+  .tab-link[href="administrador.html"]:hover,
+  .tab-link[href="administrador.html"].active{
+    color: #1A1200;
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: 0 0 18px rgba(245,166,35,0.16);
+  }
+
+  .theme-toggle{
+    position: relative;
+    margin-left: 8px;
+    display: inline-flex;
+    align-items: center;
+    width: 42px;
+    height: 24px;
+    padding: 2px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-2);
+    cursor: pointer;
+    transition: border-color .15s ease, background .15s ease;
+  }
+
+  .theme-toggle::before{
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    left: -8px;
+    border-left: 1px solid var(--border);
+    content: "";
+  }
+
+  .theme-toggle-thumb{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--text);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    transition: transform .18s ease, background .18s ease;
+  }
+
+  .theme-toggle:hover{
+    border-color: var(--success);
+  }
+
+  .theme-toggle[aria-pressed="true"]{
+    border-color: var(--success);
+    background: var(--success);
+  }
+
+  .theme-toggle[aria-pressed="true"] .theme-toggle-thumb{
+    background: #FFFFFF;
+    transform: translateX(18px);
+  }
+
+  .theme-toggle:focus-visible{
+    outline: 2px solid var(--success);
+    outline-offset: 3px;
   }
 
   .social-links{
@@ -128,7 +228,7 @@
   }
 
   @media (max-width: 560px){
-    .topbar{ padding-top: 20px; }
+    .topbar{ padding-top: 12px; }
     .tab-nav{ justify-content: center; }
     .social-links{ margin-left: 0; padding-left: 0; width: 100%; justify-content: center; }
   }
@@ -1235,7 +1335,7 @@
     padding: 8px;
     border: 1px solid var(--border);
     border-radius: 12px;
-    background: rgba(20, 23, 26, 0.9);
+    background: var(--nav-surface);
   }
 
   .admin-tab {
