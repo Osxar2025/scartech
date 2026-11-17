@@ -1,4 +1,4 @@
-##SCARTECH
+SCARTECH
 
 Sitio web personal, diseñado para suplir necesidades personales
 
